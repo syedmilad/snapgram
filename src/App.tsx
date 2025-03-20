@@ -1,26 +1,28 @@
 import { Route, Routes } from "react-router-dom";
-import SigninForm from "./_auth/forms/SigninForm.js";
-import SignupForm from "./_auth/forms/SignupForm.js";
-import Home from "./_root/Pages/Home.js";
-import AuthLayout from "./_auth/AuthLayout.js";
-import RootLayout from "./_root/RootLayout.js";
+import SigninForm from "./_auth/forms/SigninForm";
+import SignupForm from "./_auth/forms/SignupForm";
+import AuthLayout from "./_auth/AuthLayout";
+import RootLayout from "./_root/RootLayout";
+import Home from "./_root/pages/Home";
+import "./globals.css"
 
-function App() {
+const App = () => {
   return (
-    <main className="h-screen flex">
+    <main className="flex h-screen">
       <Routes>
-        {/* Public Routes */}
+        {/* public routes */}
         <Route element={<AuthLayout />}>
-          <Route path="sign-in" element={<SigninForm />} />
-          <Route path="sign-in" element={<SignupForm />} />
+          <Route path="/sign-in" element={<SigninForm />} />
+          <Route path="/sign-up" element={<SignupForm />} />
         </Route>
-        {/* Private Routes */}
-        <Route element={<RootLayout />}>
-          <Route index element={<Home />} />
-        </Route>
+
+        {/* private routes */}
+          <Route element={<RootLayout />}>
+            <Route index element={<Home />} />
+          </Route>
       </Routes>
     </main>
   );
-}
+};
 
 export default App;
